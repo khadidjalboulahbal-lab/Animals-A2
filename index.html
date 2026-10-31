@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Animals – A2 Vocabulary (Adults)</title>
+<style>
+:root{--bg:#fafaf7;--fg:#1d2733;--mut:#5d6b7a;--card:#fff;--ln:#d9dee4;--ac:#1f5f8b;--ok:#1b7f4b;--no:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171d;--fg:#e6ebf0;--mut:#98a5b3;--card:#1b222b;--ln:#2e3844;--ac:#6bb3e0;--ok:#55c98b;--no:#ff8a80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12171d;--fg:#e6ebf0;--mut:#98a5b3;--card:#1b222b;--ln:#2e3844;--ac:#6bb3e0;--ok:#55c98b;--no:#ff8a80;color-scheme:dark}
+html,body{margin:0}body{background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;max-width:860px;margin:auto;padding:20px}
+h1{font-size:26px;margin:0}.sub{color:var(--mut);margin:2px 0 14px}
+nav{display:flex;gap:6px;border-bottom:1px solid var(--ln);margin-bottom:16px;overflow-x:auto}
+nav button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;font:inherit;font-weight:600;color:var(--mut);cursor:pointer;white-space:nowrap}
+nav button.on{color:var(--ac);border-color:var(--ac)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.c{background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:14px;text-align:left;font:inherit;color:var(--fg);cursor:pointer}
+.c:hover{border-color:var(--ac)}.h{display:flex;align-items:center;gap:10px}.e{font-size:28px}.w{font-weight:700;font-size:19px}.p{color:var(--mut);font-size:14px}
+.b{margin-top:10px;font-size:14.5px;border-top:1px solid var(--ln);padding-top:8px}.b i{color:var(--mut);font-style:normal;font-size:12px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-top:6px}
+.q{background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:18px;font-size:19px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}
+.o,.go{padding:11px;border-radius:8px;border:1px solid var(--ac);background:var(--card);color:var(--fg);font:inherit;font-weight:600;cursor:pointer}
+.go{background:var(--ac);color:var(--bg)}.o.ok{background:var(--ok);border-color:var(--ok);color:#fff}.o.no{background:var(--no);border-color:var(--no);color:#fff}
+.m{color:var(--mut);font-size:14px;margin:10px 0}.fb{min-height:44px;margin-top:12px;font-size:15px}
+</style></head><body>
+<h1>Animals</h1><div class="sub">A2 vocabulary for adults · words and discussion</div>
+<nav><button class="on">Learn</button><button>Discuss</button></nav>
+<main id="m"></main>
+<script>
+const W=[
+["cow","🐄","/kaʊ/","A farm animal kept for milk and beef.","Dairy farmers often keep hundreds of cows.","have a cow = get very upset (informal)"],
+["sheep","🐑","/ʃiːp/","A farm animal kept for wool and meat. Singular and plural are the same.","He sold two hundred sheep at the market.","the black sheep of the family = the one who is different"],
+["elephant","🐘","/ˈelɪfənt/","The largest land animal, with a trunk and tusks.","Elephants can live for more than sixty years.","the elephant in the room = an obvious problem nobody mentions"],
+["puppy","🐶","/ˈpʌpi/","A young dog.","We adopted a puppy from a shelter last spring.","puppy love = a short, innocent romance, usually when young"],
+["kitten","🐱","/ˈkɪtn/","A young cat.","Our kitten sleeps for most of the day.","have kittens = be extremely nervous or angry (informal)"],
+["deer","🦌","/dɪər/","A forest animal. Males have antlers. Singular and plural are the same.","Deer often cross the road at dusk.","like a deer in the headlights = frozen with shock or fear"],
+["bear","🐻","/beər/","A large, heavy mammal that sleeps through much of the winter.","Bears eat fish, berries and honey.","a bear market = a period when stock prices fall"],
+["camel","🐪","/ˈkæməl/","A desert animal that carries people and goods and stores fat in its hump.","Camels can go several days without water.","the straw that broke the camel’s back = the last problem that makes things unbearable"],
+["turtle","🐢","/ˈtɜːrtl/","A reptile with a hard shell. Many live in the sea.","Sea turtles return to the same beach to lay their eggs.","come out of your shell = become less shy"],
+["penguin","🐧","/ˈpeŋɡwɪn/","A bird that cannot fly but swims very well. It lives in cold regions.","Penguins huddle together to keep warm.","a colony of penguins = a group of penguins"]];
+const D=["Which animal is the most useful to people? Why?","Which animal would you least like to meet in the wild?","Is it better to have a dog or a cat? Give two reasons.","Which animal best describes your personality?","Should wild animals live in zoos? Why or why not?","Which animal is the most intelligent, in your opinion?","What is the best pet for a small apartment?","Which animal is important in the culture or history of your country?"];
+const m=document.getElementById('m'),tabs=[...document.querySelectorAll('nav button')];
+const sh=a=>[...a].sort(()=>Math.random()-.5),cap=s=>s[0].toUpperCase()+s.slice(1);
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;speechSynthesis.speak(u)}catch(e){}}
+tabs.forEach((b,i)=>b.onclick=()=>{tabs.forEach(x=>x.classList.toggle('on',x==b));[learn,disc][i]()});
+function learn(){m.innerHTML='<p class="m">Tap a card to see the definition, an example and a useful expression. The word is read aloud.</p><div class="grid">'+W.map((w,i)=>`<button class="c" data-i="${i}"><div class="h"><span class="e">${w[1]}</span><div><div class="w">${cap(w[0])}</div><div class="p">${w[2]} · noun</div></div></div><div class="b" hidden><i>Meaning</i>${w[3]}<i>Example</i>${w[4]}<i>Useful language</i>${w[5]}</div></button>`).join('')+'</div>';
+m.querySelectorAll('.c').forEach(c=>c.onclick=()=>{const b=c.querySelector('.b');b.hidden=!b.hidden;if(!b.hidden)say(W[c.dataset.i][0]+'. '+W[c.dataset.i][4])})}
+function disc(){const d=sh(D);let k=0;(function show(){m.innerHTML=`<p class="m">Speaking practice · ${k+1} of ${d.length}</p><div class="q">${d[k]}</div><p class="m">Give your opinion and at least one reason. Try to use a superlative (the biggest, the most…).</p><button class="go" id="n">${k<d.length-1?'Next question':'Start again'}</button>`;n.onclick=()=>{k=(k+1)%d.length;show()}})()}
+learn();
+</script></body></html>
